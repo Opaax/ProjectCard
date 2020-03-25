@@ -11,10 +11,10 @@ namespace Com.DefaultCompany.ToolsFab.FabTools {
 
         private Transform thingToShake;
 
-        private float timeToShake;
-        private float timeRemaining;
-        private float powerOfShake;
-        private float ratio;
+        private float timeToShake = 0;
+        private float timeRemaining = 0;
+        private float powerOfShake = 0;
+        private float ratio = 0;
 
         private Coroutine coroutine;
 
