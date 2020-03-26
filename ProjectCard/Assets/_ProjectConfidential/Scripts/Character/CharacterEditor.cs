@@ -75,6 +75,12 @@ public class CharacterEditor : Editor
             lContent.text = "Every character on deck up his Attack by " + character.LeadAtt.ToString() + " % , his Def by" + character.LeadDef.ToString() + " % & his Pv by " + character.LeadPv.ToString() +" %";
             EditorGUILayout.HelpBox(lContent);
         }
+
+        EditorGUILayout.Space();
+
+        character.Attack = EditorGUILayout.IntField("Attack", character.Attack);
+        character.Defense = EditorGUILayout.IntField("Defense", character.Defense);
+        character.Pv = EditorGUILayout.IntField("Pv", character.Pv);
     }
 }
 #endif

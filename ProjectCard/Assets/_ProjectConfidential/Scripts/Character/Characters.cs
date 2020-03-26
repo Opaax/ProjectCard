@@ -8,7 +8,6 @@ public class Characters : MonoBehaviour
     [SerializeField] private CharacterType _type;
     [SerializeField] private CharacterRarety _rarety;
     [SerializeField] private CharacterLead _lead;
-
     #region Lead
     [SerializeReference,HideInInspector] private int _leadAtt = 0;
     [SerializeReference, HideInInspector] private int _leadDef = 0;
@@ -32,6 +31,30 @@ public class Characters : MonoBehaviour
         set { _leadPv = value; }
     }
     #endregion
+    #region Stats
+    [Header("Stats")]
+    [SerializeField, HideInInspector] private int _attack = 0;
+    [SerializeField, HideInInspector] private int _defense = 0;
+    [SerializeField, HideInInspector] private int _pv = 0;
+
+    public int Attack
+    {
+        get { return _attack; }
+        set { _attack = value;}
+    }
+
+    public int Defense
+    {
+        get { return _defense; }
+        set { _defense = value; }
+    }
+
+    public int Pv
+    {
+        get { return _pv; }
+        set { _pv = value; }
+    }
+    #endregion
 
     public CharacterType CardType
     {
@@ -53,6 +76,5 @@ public class Characters : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(_leadAtt);
     }
 }
