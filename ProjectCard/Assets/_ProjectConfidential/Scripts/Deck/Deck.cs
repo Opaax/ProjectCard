@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class Deck : MonoBehaviour
 
     private void Start()
     {
-        InitCard();
+        //InitCard();
     }
 
     public void InitCard()
@@ -29,6 +30,18 @@ public class Deck : MonoBehaviour
                     Debug.Log(deck[i].Defense);
                     break;
             }
+        }        
+    }
+
+    public int GetTotalLife()
+    {
+        int lTotalLife = 0;
+
+        for (int i = deck.Length - 1; i >= 0; i--)
+        {
+            lTotalLife += deck[i].Pv;
         }
+
+        return lTotalLife;
     }
 }

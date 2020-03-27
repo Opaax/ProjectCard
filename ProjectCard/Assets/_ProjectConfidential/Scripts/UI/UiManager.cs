@@ -10,18 +10,24 @@ public class UiManager : MonoBehaviour
 
     private AbstractScreen currentScreen = null;
 
+    public Action OnPlayClicked;
+
     private void Awake()
     {
         TeamScreen.Back += AddScreen;
         TitleScreen.TitleToTeam += AddScreen;
+        TitleScreen.TitlePlayClicked += TitleScreen_Play_Clicked;
     }
 
+    private void TitleScreen_Play_Clicked()
+    {
+        OnPlayClicked?.Invoke();
+    }
 
-    private void Start()
+    public void Init()
     {
         if (initScreen)
             AddScreen(TitleScreen.Instance);
-
     }
 
     private void AddScreen(AbstractScreen screen)
@@ -36,5 +42,6 @@ public class UiManager : MonoBehaviour
     {
         TeamScreen.Back -= AddScreen;
         TitleScreen.TitleToTeam -= AddScreen;
+        TitleScreen.TitlePlayClicked += TitleScreen_Play_Clicked;
     }
 }

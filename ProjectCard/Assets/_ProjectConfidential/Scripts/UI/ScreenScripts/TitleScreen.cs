@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Com.PackSoor.ProjectCard.ProjectConfidential.UI.ScreenScripts {
+    public delegate void TitlePlayClickedEventHandler();
 	public class TitleScreen : AbstractScreen {
         #region Singleton
         private static TitleScreen instance;
@@ -15,6 +16,7 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.UI.ScreenScripts {
         #endregion
         #region EventDelagate
         public static event ScreenAddScreenButtonEventHandler TitleToTeam;
+        public static event TitlePlayClickedEventHandler TitlePlayClicked;
         #endregion
 
         [Header("Buttons")]
@@ -68,6 +70,7 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.UI.ScreenScripts {
         private void OnClickedPlay()
         {
             Debug.Log("Play");
+            TitlePlayClicked?.Invoke();
         }
 
         private void OnClickedMainMenu()

@@ -85,10 +85,13 @@ public class CharacterEditor : Editor
 
         if (EditorGUI.EndChangeCheck())
         {
-            character.basedStats.Clear();
-            character.basedStats.Add("att", (uint)character.Attack);
-            character.basedStats.Add("def", (uint)character.Defense);
-            character.basedStats.Add("pv", (uint)character.Pv);
+            ///character.basedStats.Clear();
+            //character.basedStats = new Dictionary<string, uint>
+            //{
+            //    {"att", (uint)character.Attack},
+            //    {"def", (uint)character.Defense},
+            //    {"pv", (uint)character.Pv}
+            //};
         }
     }
 }

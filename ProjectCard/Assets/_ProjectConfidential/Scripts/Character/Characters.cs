@@ -1,5 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class Characters : MonoBehaviour
@@ -76,10 +80,6 @@ public class Characters : MonoBehaviour
         get { return _lead; }
         set { _lead = value; }
     }
-    #endregion
-
-    #region baseStats
-    public Dictionary<string, uint> basedStats = new Dictionary<string, uint>();
     #endregion
 
     private void Start()
