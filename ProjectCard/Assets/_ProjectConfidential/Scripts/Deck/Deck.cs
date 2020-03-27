@@ -18,19 +18,16 @@ public class Deck : MonoBehaviour
         Characters lead = deck[0];
         for (int i = deck.Length - 1; i >= 0; i--)
         {
-            float addingStats = 0;
-
-            if (lead.CardLead == CharacterLead.ATT)
+            switch (lead.CardLead)
             {
-                addingStats = deck[i].Attack * DeckUtils.TransformToPercent(lead.LeadAtt);
-                deck[i].Attack += (int)addingStats;
-                Debug.Log(deck[i].Attack);
-            }
-            else if (lead.CardLead == CharacterLead.DEF)
-            {
-                addingStats = deck[i].Defense * DeckUtils.TransformToPercent(lead.LeadDef);
-                deck[i].Defense += (int)addingStats;
-                Debug.Log(deck[i].Defense);
+                case CharacterLead.ATT:
+                    deck[i].Attack += (int)DeckUtils.AddingStats(deck[i].Attack, lead.LeadAtt);
+                    Debug.Log(deck[i].Attack);
+                    break;
+                case CharacterLead.DEF:
+                    deck[i].Defense += (int)DeckUtils.AddingStats(deck[i].Defense, lead.LeadDef);
+                    Debug.Log(deck[i].Defense);
+                    break;
             }
         }
     }

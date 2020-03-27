@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Characters : MonoBehaviour
 {
+    #region Specs
     [Header("Specs")]
     [SerializeField] private CharacterType _type;
     [SerializeField] private CharacterRarety _rarety;
     [SerializeField] private CharacterLead _lead;
+    #endregion
     #region Lead
     [SerializeReference,HideInInspector] private int _leadAtt = 0;
     [SerializeReference, HideInInspector] private int _leadDef = 0;
@@ -56,6 +58,7 @@ public class Characters : MonoBehaviour
     }
     #endregion
 
+    #region GetterSetters
     public CharacterType CardType
     {
         get { return _type; }
@@ -73,6 +76,11 @@ public class Characters : MonoBehaviour
         get { return _lead; }
         set { _lead = value; }
     }
+    #endregion
+
+    #region baseStats
+    public Dictionary<string, uint> basedStats = new Dictionary<string, uint>();
+    #endregion
 
     private void Start()
     {

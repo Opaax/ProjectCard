@@ -18,6 +18,7 @@ public class CharacterEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        EditorGUI.BeginChangeCheck();
         base.OnInspectorGUI();
 
         EditorGUILayout.Space();
@@ -81,6 +82,14 @@ public class CharacterEditor : Editor
         character.Attack = EditorGUILayout.IntField("Attack", character.Attack);
         character.Defense = EditorGUILayout.IntField("Defense", character.Defense);
         character.Pv = EditorGUILayout.IntField("Pv", character.Pv);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            character.basedStats.Clear();
+            character.basedStats.Add("att", (uint)character.Attack);
+            character.basedStats.Add("def", (uint)character.Defense);
+            character.basedStats.Add("pv", (uint)character.Pv);
+        }
     }
 }
 #endif
