@@ -19,15 +19,15 @@ public class Deck : MonoBehaviour
         Characters lead = deck[0];
         for (int i = deck.Length - 1; i >= 0; i--)
         {
-            switch (lead.CardLead)
+            switch (lead.Settings.CardLead)
             {
                 case CharacterLead.ATT:
-                    deck[i].Attack += (int)DeckUtils.AddingStats(deck[i].Attack, lead.LeadAtt);
-                    Debug.Log(deck[i].Attack);
+                    deck[i].Settings.Attack += (int)DeckUtils.AddingStats(deck[i].Settings.Attack, lead.Settings.LeadAtt);
+                    Debug.Log(deck[i].Settings.Attack);
                     break;
                 case CharacterLead.DEF:
-                    deck[i].Defense += (int)DeckUtils.AddingStats(deck[i].Defense, lead.LeadDef);
-                    Debug.Log(deck[i].Defense);
+                    deck[i].Settings.Defense += (int)DeckUtils.AddingStats(deck[i].Settings.Defense, lead.Settings.LeadDef);
+                    Debug.Log(deck[i].Settings.Defense);
                     break;
             }
         }        
@@ -39,7 +39,8 @@ public class Deck : MonoBehaviour
 
         for (int i = deck.Length - 1; i >= 0; i--)
         {
-            lTotalLife += deck[i].Pv;
+            Debug.Log(deck[i].gameObject.GetInstanceID());
+            lTotalLife += deck[i].Settings.Pv;
         }
 
         return lTotalLife;
