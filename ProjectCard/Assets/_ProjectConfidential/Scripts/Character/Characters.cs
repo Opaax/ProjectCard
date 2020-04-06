@@ -11,78 +11,45 @@ public class Characters : MonoBehaviour
 {
     [SerializeField] private ScriptableCharacter _settings = null;
 
+    #region Gameplay Stats
+    private int _attack;
+    private int _defense;
+    private int _pv;
+
+    public int Attack
+    {
+        get { return _attack; }
+        set { _attack = value; }
+    }
+
+    public int Defense
+    {
+        get { return _defense; }
+        set { _defense = value; }
+    }
+
+    public int Pv
+    {
+        get { return _pv; }
+        set { _pv = value; }
+    }
+    #endregion
+    #region Character Data Stats
     public ScriptableCharacter Settings => _settings;
-    //#region Specs
-    //[Header("Specs")]
-    //[SerializeField] private CharacterType _type;
-    //[SerializeField] private CharacterRarety _rarety;
-    //[SerializeField] private CharacterLead _lead;
-    //#endregion
-    //#region Lead
-    //[SerializeReference,HideInInspector] private int _leadAtt = 0;
-    //[SerializeReference, HideInInspector] private int _leadDef = 0;
-    //[SerializeReference, HideInInspector] private int _leadPv = 0;
+    
+    public int GetAttack ()
+    {
+        return _settings.Attack;
+    }
 
-    //public int LeadAtt
-    //{
-    //    get { return _leadAtt; }
-    //    set { _leadAtt = value; }
-    //}
+    public int GetDefense()
+    {
+        return _settings.Defense;
+    }
 
-    //public int LeadDef
-    //{
-    //    get { return _leadDef; }
-    //    set { _leadDef = value; }
-    //}
-
-    //public int LeadPv
-    //{
-    //    get { return _leadPv; }
-    //    set { _leadPv = value; }
-    //}
-    //#endregion
-    //#region Stats
-    //[Header("Stats")]
-    //[SerializeField, HideInInspector] private int _attack = 0;
-    //[SerializeField, HideInInspector] private int _defense = 0;
-    //[SerializeField, HideInInspector] private int _pv = 0;
-
-    //public int Attack
-    //{
-    //    get { return _attack; }
-    //    set { _attack = value;}
-    //}
-
-    //public int Defense
-    //{
-    //    get { return _defense; }
-    //    set { _defense = value; }
-    //}
-
-    //public int Pv
-    //{
-    //    get { return _pv; }
-    //    set { _pv = value; }
-    //}
-    //#endregion
-
-    //#region GetterSetters
-    //public CharacterType CardType
-    //{
-    //    get { return _type; }
-    //    set { _type = value; }
-    //}
-
-    //public CharacterRarety CardRarety
-    //{
-    //    get { return _rarety; }
-    //    set { _rarety = value; }
-    //}
-
-    //public CharacterLead CardLead
-    //{
-    //    get { return _lead; }
-    //    set { _lead = value; }
-    //}
-    //#endregion
+    public int GetPv()
+    {
+        return _settings.Pv;
+    }
+    #endregion
 }

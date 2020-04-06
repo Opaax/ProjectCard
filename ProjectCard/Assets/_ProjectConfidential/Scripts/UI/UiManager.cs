@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
+    [Header("Debugs")]
     public bool initScreen = false;
+    public AbstractScreen screenToInit = null;
 
     private AbstractScreen currentScreen = null;
 
@@ -27,7 +29,12 @@ public class UiManager : MonoBehaviour
     public void Init()
     {
         if (initScreen)
-            AddScreen(TitleScreen.Instance);
+        {
+            if (screenToInit)
+                AddScreen(screenToInit);
+            else
+                AddScreen(TitleScreen.Instance);
+        }
     }
 
     private void AddScreen(AbstractScreen screen)
