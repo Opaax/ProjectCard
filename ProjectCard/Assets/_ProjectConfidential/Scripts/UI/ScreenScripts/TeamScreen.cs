@@ -18,6 +18,7 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.UI.ScreenScripts {
         #endregion
 
         [SerializeField] private Button buttonBack = null;
+        [SerializeField] private Button buttonDeck = null;
         private void Awake(){
 			if (instance){
 				Destroy(gameObject);
@@ -42,19 +43,27 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.UI.ScreenScripts {
         #region MethodesListener
         private void AddListenerButton()
         {
-            buttonBack.onClick.AddListener(OnClickedButton);
+            buttonBack.onClick.AddListener(OnClickedButtonBack);
+            buttonDeck.onClick.AddListener(OnClickedButtonDeck);
         }
 
         private void RemoveListenerButton()
         {
-            buttonBack.onClick.RemoveListener(OnClickedButton);
+            buttonBack.onClick.RemoveListener(OnClickedButtonBack);
+            buttonDeck.onClick.RemoveListener(OnClickedButtonDeck);
         }
+
         #endregion
         #region ClickedMethodes
-        private void OnClickedButton()
+        private void OnClickedButtonBack()
         {
             Debug.Log("Back");
             Back?.Invoke(TitleScreen.Instance);
+        }
+
+        private void OnClickedButtonDeck()
+        {
+            Debug.Log("Deck");
         }
         #endregion
 

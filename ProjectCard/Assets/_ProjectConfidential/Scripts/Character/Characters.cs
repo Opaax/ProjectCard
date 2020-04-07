@@ -1,46 +1,25 @@
+using Com.PackSoor.ProjectCard.ProjectConfidential.Character;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class Characters : MonoBehaviour
 {
-    [Header("Specs")]
-    [SerializeField] private CharacterType _type;
-    [SerializeField] private CharacterRarety _rarety;
-    [SerializeField] private CharacterLead _lead;
-    #region Lead
-    [SerializeReference,HideInInspector] private int _leadAtt = 0;
-    [SerializeReference, HideInInspector] private int _leadDef = 0;
-    [SerializeReference, HideInInspector] private int _leadPv = 0;
+    [SerializeField] private ScriptableCharacter _settings = null;
 
-    public int LeadAtt
-    {
-        get { return _leadAtt; }
-        set { _leadAtt = value; }
-    }
-
-    public int LeadDef
-    {
-        get { return _leadDef; }
-        set { _leadDef = value; }
-    }
-
-    public int LeadPv
-    {
-        get { return _leadPv; }
-        set { _leadPv = value; }
-    }
-    #endregion
-    #region Stats
-    [Header("Stats")]
-    [SerializeField, HideInInspector] private int _attack = 0;
-    [SerializeField, HideInInspector] private int _defense = 0;
-    [SerializeField, HideInInspector] private int _pv = 0;
+    #region Gameplay Stats
+    private int _attack;
+    private int _defense;
+    private int _pv;
 
     public int Attack
     {
         get { return _attack; }
-        set { _attack = value;}
+        set { _attack = value; }
     }
 
     public int Defense
@@ -55,26 +34,22 @@ public class Characters : MonoBehaviour
         set { _pv = value; }
     }
     #endregion
-
-    public CharacterType CardType
+    #region Character Data Stats
+    public ScriptableCharacter Settings => _settings;
+    
+    public int GetAttack ()
     {
-        get { return _type; }
-        set { _type = value; }
+        return _settings.Attack;
     }
 
-    public CharacterRarety CardRarety
+    public int GetDefense()
     {
-        get { return _rarety; }
-        set { _rarety = value; }
+        return _settings.Defense;
     }
 
-    public CharacterLead CardLead
+    public int GetPv()
     {
-        get { return _lead; }
-        set { _lead = value; }
+        return _settings.Pv;
     }
-
-    private void Start()
-    {
-    }
+    #endregion
 }

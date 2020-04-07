@@ -18,69 +18,95 @@ public class CharacterEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        EditorGUI.BeginChangeCheck();
+
         base.OnInspectorGUI();
 
+        if (!character.Settings)
+        {
+            EditorGUILayout.HelpBox("You must add settings", MessageType.Warning);
+            return;
+        }
+
         EditorGUILayout.Space();
-        if(character.CardLead == CharacterLead.ATT)
+        character.Settings.CardType = (CharacterType)EditorGUILayout.EnumPopup("Type of Card", character.Settings.CardType);
+        EditorGUILayout.Space();
+        character.Settings.CardRarety = (CharacterRarety)EditorGUILayout.EnumPopup("Rarety of Card", character.Settings.CardRarety);
+        EditorGUILayout.Space();
+        character.Settings.CardLead = (CharacterLead)EditorGUILayout.EnumPopup("Lead of Card", character.Settings.CardLead);
+        EditorGUILayout.Space();
+
+        if (character.Settings.CardLead == CharacterLead.ATT)
         {
-            character.LeadAtt = EditorGUILayout.IntField("Attack Lead as %", character.LeadAtt);
+            character.Settings.LeadAtt = EditorGUILayout.IntField("Attack Lead as %", character.Settings.LeadAtt);
             GUIContent lContent = new GUIContent();
-            lContent.text = "Every character on deck up his Attack by " + character.LeadAtt.ToString() + " %";
+            lContent.text = "Every character on deck up his Attack by " + character.Settings.LeadAtt.ToString() + " %";
             EditorGUILayout.HelpBox(lContent);
         }
-        else if(character.CardLead == CharacterLead.PV)
+        else if(character.Settings.CardLead == CharacterLead.PV)
         {
-            character.LeadPv = EditorGUILayout.IntField("Pv Lead as %", character.LeadPv);
+            character.Settings.LeadPv = EditorGUILayout.IntField("Pv Lead as %", character.Settings.LeadPv);
             GUIContent lContent = new GUIContent();
-            lContent.text = "Every character on deck up his Pv by " + character.LeadPv.ToString() + " %";
+            lContent.text = "Every character on deck up his Pv by " + character.Settings.LeadPv.ToString() + " %";
             EditorGUILayout.HelpBox(lContent);
         }
-        else if (character.CardLead == CharacterLead.DEF)
+        else if (character.Settings.CardLead == CharacterLead.DEF)
         {
-            character.LeadDef = EditorGUILayout.IntField("Def Lead as %", character.LeadDef);
+            character.Settings.LeadDef = EditorGUILayout.IntField("Def Lead as %", character.Settings.LeadDef);
             GUIContent lContent = new GUIContent();
-            lContent.text = "Every character on deck up his Def by " + character.LeadDef.ToString() + " %";
+            lContent.text = "Every character on deck up his Def by " + character.Settings.LeadDef.ToString() + " %";
             EditorGUILayout.HelpBox(lContent);
         }
-        else if (character.CardLead == CharacterLead.ATTDEF)
+        else if (character.Settings.CardLead == CharacterLead.ATTDEF)
         {
-            character.LeadAtt = EditorGUILayout.IntField("Attack Lead as %", character.LeadAtt);
-            character.LeadDef = EditorGUILayout.IntField("Def Lead as %", character.LeadDef);
+            character.Settings.LeadAtt = EditorGUILayout.IntField("Attack Lead as %", character.Settings.LeadAtt);
+            character.Settings.LeadDef = EditorGUILayout.IntField("Def Lead as %", character.Settings.LeadDef);
             GUIContent lContent = new GUIContent();
-            lContent.text = "Every character on deck up his Attack by " + character.LeadAtt.ToString() + " % & his Def by" + character.LeadDef.ToString() + " %";
+            lContent.text = "Every character on deck up his Attack by " + character.Settings.LeadAtt.ToString() + " % & his Def by" + character.Settings.LeadDef.ToString() + " %";
             EditorGUILayout.HelpBox(lContent);
         }
-        else if (character.CardLead == CharacterLead.PVDEF)
+        else if (character.Settings.CardLead == CharacterLead.PVDEF)
         {
-            character.LeadPv = EditorGUILayout.IntField("Pv Lead as %", character.LeadPv);
-            character.LeadDef = EditorGUILayout.IntField("Def Lead as %", character.LeadDef);
+            character.Settings.LeadPv = EditorGUILayout.IntField("Pv Lead as %", character.Settings.LeadPv);
+            character.Settings.LeadDef = EditorGUILayout.IntField("Def Lead as %", character.Settings.LeadDef);
             GUIContent lContent = new GUIContent();
-            lContent.text = "Every character on deck up his Pv by " + character.LeadPv.ToString() + " % & his Def by" + character.LeadDef.ToString() + " %";
+            lContent.text = "Every character on deck up his Pv by " + character.Settings.LeadPv.ToString() + " % & his Def by" + character.Settings.LeadDef.ToString() + " %";
             EditorGUILayout.HelpBox(lContent);
         }
-        else if (character.CardLead == CharacterLead.PVATT)
+        else if (character.Settings.CardLead == CharacterLead.PVATT)
         {
-            character.LeadAtt = EditorGUILayout.IntField("Attack Lead as %", character.LeadAtt);
-            character.LeadPv = EditorGUILayout.IntField("Pv Lead as %", character.LeadPv);
+            character.Settings.LeadAtt = EditorGUILayout.IntField("Attack Lead as %", character.Settings.LeadAtt);
+            character.Settings.LeadPv = EditorGUILayout.IntField("Pv Lead as %", character.Settings.LeadPv);
             GUIContent lContent = new GUIContent();
-            lContent.text = "Every character on deck up his Pv by " + character.LeadPv.ToString() + " % & his Attack by" + character.LeadAtt.ToString() + " %";
+            lContent.text = "Every character on deck up his Pv by " + character.Settings.LeadPv.ToString() + " % & his Attack by" + character.Settings.LeadAtt.ToString() + " %";
             EditorGUILayout.HelpBox(lContent);
         }
-        else if (character.CardLead == CharacterLead.ATTDEFPV)
+        else if (character.Settings.CardLead == CharacterLead.ATTDEFPV)
         {
-            character.LeadAtt = EditorGUILayout.IntField("Attack Lead as %", character.LeadAtt);
-            character.LeadDef = EditorGUILayout.IntField("Def Lead as %", character.LeadDef);
-            character.LeadPv = EditorGUILayout.IntField("Pv Lead as %", character.LeadPv);
+            character.Settings.LeadAtt = EditorGUILayout.IntField("Attack Lead as %", character.Settings.LeadAtt);
+            character.Settings.LeadDef = EditorGUILayout.IntField("Def Lead as %", character.Settings.LeadDef);
+            character.Settings.LeadPv = EditorGUILayout.IntField("Pv Lead as %", character.Settings.LeadPv);
             GUIContent lContent = new GUIContent();
-            lContent.text = "Every character on deck up his Attack by " + character.LeadAtt.ToString() + " % , his Def by" + character.LeadDef.ToString() + " % & his Pv by " + character.LeadPv.ToString() +" %";
+            lContent.text = "Every character on deck up his Attack by " + character.Settings.LeadAtt.ToString() + " % , his Def by" + character.Settings.LeadDef.ToString() + " % & his Pv by " + character.Settings.LeadPv.ToString() +" %";
             EditorGUILayout.HelpBox(lContent);
         }
 
         EditorGUILayout.Space();
 
-        character.Attack = EditorGUILayout.IntField("Attack", character.Attack);
-        character.Defense = EditorGUILayout.IntField("Defense", character.Defense);
-        character.Pv = EditorGUILayout.IntField("Pv", character.Pv);
+        character.Settings.Attack = EditorGUILayout.IntField("Attack", character.Settings.Attack);
+        character.Settings.Defense = EditorGUILayout.IntField("Defense", character.Settings.Defense);
+        character.Settings.Pv = EditorGUILayout.IntField("Pv", character.Settings.Pv);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            ///character.basedStats.Clear();
+            //character.basedStats = new Dictionary<string, uint>
+            //{
+            //    {"att", (uint)character.Attack},
+            //    {"def", (uint)character.Defense},
+            //    {"pv", (uint)character.Pv}
+            //};
+        }
     }
 }
 #endif

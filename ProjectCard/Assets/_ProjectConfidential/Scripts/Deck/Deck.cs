@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class Deck : MonoBehaviour
 
     private void Start()
     {
-        InitCard();
+        //InitCard();
     }
 
     public void InitCard()
@@ -18,20 +19,74 @@ public class Deck : MonoBehaviour
         Characters lead = deck[0];
         for (int i = deck.Length - 1; i >= 0; i--)
         {
-            float addingStats = 0;
+            switch (lead.Settings.CardLead)
+            {
+                case CharacterLead.ATT:
+                    deck[i].Attack += (int)DeckUtils.AddingStats(deck[i].Settings.Attack, lead.Settings.LeadAtt);
+                    Debug.Log(deck[i].Settings.Attack);
+                    break;
+                case CharacterLead.DEF:
+                    deck[i].Defense += (int)DeckUtils.AddingStats(deck[i].Settings.Defense, lead.Settings.LeadDef);
+                    Debug.Log(deck[i].Settings.Defense);
+                    break;
+                case CharacterLead.PV:
+                    deck[i].Pv += (int)DeckUtils.AddingStats(deck[i].Settings.Pv, lead.Settings.LeadPv);
+                    Debug.Log(deck[i].Settings.Defense);
+                    break;
+                case CharacterLead.ATTDEF:
+                    deck[i].Attack += (int)DeckUtils.AddingStats(deck[i].Settings.Attack, lead.Settings.LeadAtt);
+                    Debug.Log(deck[i].Settings.Attack);
+                    deck[i].Defense += (int)DeckUtils.AddingStats(deck[i].Settings.Defense, lead.Settings.LeadDef);
+                    Debug.Log(deck[i].Settings.Defense);
+                    break;
+                case CharacterLead.PVATT:
+                    deck[i].Attack += (int)DeckUtils.AddingStats(deck[i].Settings.Attack, lead.Settings.LeadAtt);
+                    Debug.Log(deck[i].Settings.Attack);
+                    deck[i].Pv += (int)DeckUtils.AddingStats(deck[i].Settings.Pv, lead.Settings.LeadPv);
+                    Debug.Log(deck[i].Settings.Defense);
+                    break;
+                case CharacterLead.PVDEF:
+                    deck[i].Pv += (int)DeckUtils.AddingStats(deck[i].Settings.Pv, lead.Settings.LeadPv);
+                    Debug.Log(deck[i].Settings.Defense);
+                    deck[i].Defense += (int)DeckUtils.AddingStats(deck[i].Settings.Defense, lead.Settings.LeadDef);
+                    Debug.Log(deck[i].Settings.Defense);
+                    break;
+                case CharacterLead.ATTDEFPV:
+                    deck[i].Pv += (int)DeckUtils.AddingStats(deck[i].Settings.Pv, lead.Settings.LeadPv);
+                    Debug.Log(deck[i].Settings.Defense);
+                    deck[i].Defense += (int)DeckUtils.AddingStats(deck[i].Settings.Defense, lead.Settings.LeadDef);
+                    Debug.Log(deck[i].Settings.Defense);
+                    deck[i].Attack += (int)DeckUtils.AddingStats(deck[i].Settings.Attack, lead.Settings.LeadAtt);
+                    Debug.Log(deck[i].Settings.Attack); 
+                    break;
+            }
+        }        
+    }
 
-            if (lead.CardLead == CharacterLead.ATT)
-            {
-                addingStats = deck[i].Attack * DeckUtils.TransformToPercent(lead.LeadAtt);
-                deck[i].Attack += (int)addingStats;
-                Debug.Log(deck[i].Attack);
-            }
-            else if (lead.CardLead == CharacterLead.DEF)
-            {
-                addingStats = deck[i].Defense * DeckUtils.TransformToPercent(lead.LeadDef);
-                deck[i].Defense += (int)addingStats;
-                Debug.Log(deck[i].Defense);
-            }
+    public int GetTotalLife()
+    {
+        int lTotalLife = 0;
+
+        for (int i = deck.Length - 1; i >= 0; i--)
+        {
+            lTotalLife += deck[i].Settings.Pv;
         }
+
+        return lTotalLife;
+    }
+
+    public int GetCharacterAttack(int index)
+    {
+        return deck[index].GetAttack();
+    }
+
+    public int GetCharacterDefense(int index)
+    {
+        return deck[index].GetDefense();
+    }
+
+    public int GetCharacterPv(int index)
+    {
+        return deck[index].GetPv();
     }
 }

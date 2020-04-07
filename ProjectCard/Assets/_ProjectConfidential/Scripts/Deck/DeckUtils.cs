@@ -8,4 +8,9 @@ public static class DeckUtils
     {
         return (float)value/100;
     }
+
+    static public float AddingStats(int stat, int leadStat)
+    {
+        return stat * TransformToPercent(leadStat);
+    }
 }
