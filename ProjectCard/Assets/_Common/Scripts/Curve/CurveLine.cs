@@ -11,8 +11,8 @@ namespace Com.PackSoor.ProjectCard.Common.Curve {
         [SerializeField] private Vector3[] _pathPoints;
         [Space]
         [Header("ThingsToInstatiate")]
-        [SerializeField] private GameObject _objectToInstantiate;
-        [SerializeField] private Transform _objectToInstantiateParent;
+        [SerializeField] private GameObject _objectToInstantiate = null;
+        [SerializeField] private Transform _objectToInstantiateParent = null;
         [Space]
         [Header("settings")]
         [SerializeField] private float _spacing = 1;

@@ -14,9 +14,6 @@ namespace Com.IsartDigital.PlatFormer.Platformer.Localization {
 
         private Dictionary<string, string[]> _localizationDico = new Dictionary<string, string[]>();
 
-        private int _enIndex = 0;
-        private int _frIndex = 1;
-
         public LocalizationManager(string path)
         {
             pathLoc = path;
