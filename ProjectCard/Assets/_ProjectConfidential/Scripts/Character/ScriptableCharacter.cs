@@ -48,7 +48,14 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.Character {
         [SerializeField, HideInInspector] private int _attack = 0;
         [SerializeField, HideInInspector] private int _defense = 0;
         [SerializeField, HideInInspector] private int _pv = 0;
+        #endregion
+        #region 3D Models
+        [Space]
+        [Header("3D mobels")]
+        [SerializeField, HideInInspector] private GameObject _model = null;
+        #endregion
 
+        #region Stats Getter
         public int Attack
         {
             get { return _attack; }
@@ -67,8 +74,7 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.Character {
             set { _pv = value; }
         }
         #endregion
-
-        #region GetterSetters
+        #region GetterSetters Card
         public CharacterType CardType
         {
             get { return _type; }
@@ -86,6 +92,9 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.Character {
             get { return _lead; }
             set { _lead = value; }
         }
+        #endregion
+        #region 3D model Getter
+        public GameObject Model { get => _model; set => _model = value; }
         #endregion
     }
 }

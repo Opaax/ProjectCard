@@ -97,6 +97,9 @@ public class CharacterEditor : Editor
         character.Settings.Defense = EditorGUILayout.IntField("Defense", character.Settings.Defense);
         character.Settings.Pv = EditorGUILayout.IntField("Pv", character.Settings.Pv);
 
+        EditorGUILayout.Space();
+
+        character.Settings.Model = (GameObject)EditorGUILayout.ObjectField("Model", character.Settings.Model, typeof(GameObject), false);
         if (EditorGUI.EndChangeCheck())
         {
             ///character.basedStats.Clear();

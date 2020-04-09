@@ -11,8 +11,13 @@ public class ArenaPath : MonoBehaviour
     [Space]
     [Header("Position")]
     [SerializeField] Vector3[] _points = null;
+    [Space]
+    [Header("Tween")]
+    [SerializeField] ArenaPath tween = null;
 
     public ArenaPathSetting Settings => _settings;
+    public ArenaPath Tween => tween;
+
     public Vector3[] Points
     {
         get { return _points; }

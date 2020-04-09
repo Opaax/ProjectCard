@@ -43,7 +43,12 @@ public class Mobile : MonoBehaviour
     private void CheckEndPath()
     {
         if (transform.position.x > path.Settings.EndPoint.x)
+        {
             SetModeVoid();
+            transform.transform.position = path.Tween.Settings.StartPoint + new Vector3(0, 0.5f, 0);
+            path = path.Tween;
+            SetModeMove();
+        }
     }
 
     #region StateMachine
