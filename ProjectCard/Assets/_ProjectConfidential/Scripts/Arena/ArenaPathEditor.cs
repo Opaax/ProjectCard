@@ -51,8 +51,10 @@ public class ArenaPathEditor : Editor
             RepairPoints();
             return;
         }
-
         CheckStartEndPosition(arenaPath.Points);
+
+        arenaPath.Tween = (ArenaPath)EditorGUILayout.ObjectField("Tween", arenaPath.Tween, typeof(ArenaPath));
+        arenaPath.Settings.IsDraggableForPlayer = EditorGUILayout.Toggle("IsDraggableByPlayer", arenaPath.Settings.IsDraggableForPlayer);
     }
 
     private Vector3 ShowPoint(int index)

@@ -14,6 +14,8 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.Arena {
 	)]
 	
 	public class ArenaPathSetting : ScriptableObject {
+        [SerializeField] private bool _isDraggableForPlayer = false;
+
         private Vector3 _startPoint = default;
         private Vector3 _endPoint = default;
 
@@ -27,5 +29,7 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.Arena {
             get { return _endPoint; }
             set { _endPoint = value; }
         }
+
+        public bool IsDraggableForPlayer { get => _isDraggableForPlayer; set => _isDraggableForPlayer = value; }
     }
 }
