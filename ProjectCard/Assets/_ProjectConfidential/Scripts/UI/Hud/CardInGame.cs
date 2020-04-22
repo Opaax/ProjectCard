@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,15 +11,59 @@ public class CardInGame : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDra
 
     private Vector3 initPosition = Vector3.zero;
 
+    private RectTransform rect = default;
+
+    private float baseWidth = 0;
+    private float baseHeight = 0;
+
+    private void Start()
+    {
+        rect = GetComponent<RectTransform>();
+
+        baseWidth = rect.sizeDelta.x;
+        baseHeight = rect.sizeDelta.y;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         initPosition = transform.position;
         isDraggable = true;
+
+        StartCoroutine(StartDragRoutine());
+    }
+
+    private IEnumerator StartDragRoutine()
+    {
+        float lElapsedTime = 0;
+        float lTimeEffect = 0.1f;
+
+        while (lElapsedTime <= lTimeEffect)
+        {
+            lElapsedTime += Time.deltaTime;
+
+            rect.sizeDelta = new Vector2(Mathf.Lerp(baseWidth, baseWidth * 1.2f, lElapsedTime / lTimeEffect), Mathf.Lerp(baseHeight, baseHeight * 1.2f, lElapsedTime / lTimeEffect));
+
+            yield return null;
+        }
+
+        lElapsedTime = 0;
+        lTimeEffect = 0.5f;
+
+        while(lElapsedTime <= lTimeEffect)
+        {
+            lElapsedTime += Time.deltaTime;
+
+            rect.sizeDelta = new Vector2(Mathf.Lerp(rect.sizeDelta.x, baseWidth * 0.75f, lElapsedTime / lTimeEffect), Mathf.Lerp(rect.sizeDelta.y, baseHeight * 0.75f, lElapsedTime / lTimeEffect));
+
+            yield return null;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (!isDraggable) return;
+
+        if (!eventData.pointerEnter) return;
 
         RectTransform lEventTransform = eventData.pointerEnter.transform as RectTransform;
 
@@ -59,10 +104,29 @@ public class CardInGame : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDra
                     lMobile.Path = lArena;
                 }
                 else
-                    transform.position = initPosition;
+                {
+                    StartCoroutine(BackToInitPosRoutine());
+                }
             }
         }
         else
-            transform.position = initPosition;
+        {
+            StartCoroutine(BackToInitPosRoutine());
+        }
+    }
+
+    private IEnumerator BackToInitPosRoutine()
+    {
+        float lElapsedTime = 0;
+        float lTimeToEffect = 1;
+
+        while(lElapsedTime <= lTimeToEffect)
+        {
+            lElapsedTime += Time.deltaTime;
+
+            transform.position = Vector3.Lerp(transform.position, initPosition, lElapsedTime / lTimeToEffect);
+
+            yield return null;
+        }
     }
 }

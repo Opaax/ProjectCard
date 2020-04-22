@@ -4,6 +4,7 @@
 ///-----------------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Com.PackSoor.ProjectCard.ProjectConfidential.Character {
 	
@@ -54,6 +55,11 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.Character {
         [Header("3D mobels")]
         [SerializeField, HideInInspector] private GameObject _model = null;
         #endregion
+        #region Cards view
+        [SerializeField, HideInInspector] private Image _mainCardImage = null;
+        [SerializeField, HideInInspector] private Image _hudCardImage = null;
+        [SerializeField, HideInInspector] private Image _teamCardImage = null;
+        #endregion
 
         #region Stats Getter
         public int Attack
@@ -95,6 +101,11 @@ namespace Com.PackSoor.ProjectCard.ProjectConfidential.Character {
         #endregion
         #region 3D model Getter
         public GameObject Model { get => _model; set => _model = value; }
+        #endregion
+        #region Cards view Getter
+        public Image MainCardImage { get => _mainCardImage; set => _mainCardImage = value; }
+        public Image HudCardImage { get => _hudCardImage; set => _hudCardImage = value; }
+        public Image TeamCardImage { get => _teamCardImage; set => _teamCardImage = value; }
         #endregion
     }
 }

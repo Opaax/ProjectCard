@@ -12,26 +12,9 @@ public class Mobile : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("MobileStart");
         SetModeVoid();
         InitPosition();
     }
-
-    //private void DebugTest()
-    //{
-    //    RaycastHit hit; 
-    //    if(Physics.Raycast(transform.position,-transform.up,out hit,Mathf.Infinity))
-    //    {
-    //        Debug.Log("[RaycastMobile]" + " " + hit.transform);
-    //        if (hit.transform.GetComponent<ArenaPath>())
-    //        {
-    //            path = hit.transform.GetComponent<ArenaPath>();
-    //            transform.position = path.Settings.StartPoint + new Vector3(0, 0.5f, 0);
-    //            transform.rotation = Quaternion.LookRotation(path.Settings.EndPoint - path.Settings.StartPoint);
-    //            SetModeMove();
-    //        }
-    //    }
-    //}
 
     public void InitPosition ()
     {
@@ -84,7 +67,6 @@ public class Mobile : MonoBehaviour
 
     protected void DoActionMove()
     {
-        Debug.Log("Move");
         transform.position += transform.forward * 10f * Time.deltaTime;
     }
     #endregion
