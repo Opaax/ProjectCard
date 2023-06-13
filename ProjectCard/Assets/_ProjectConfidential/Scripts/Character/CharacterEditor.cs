@@ -11,7 +11,7 @@ public class CharacterEditor : Editor
     private Characters character = null;
     private CharacterLead lead;
 
-    private void OnSceneGUI()
+    private void OnEnable()
     {
         character = target as Characters;
     }

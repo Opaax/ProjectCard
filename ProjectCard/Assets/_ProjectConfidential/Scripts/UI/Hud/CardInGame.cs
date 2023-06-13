@@ -108,6 +108,10 @@ public class CardInGame : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDra
                     StartCoroutine(BackToInitPosRoutine());
                 }
             }
+            else
+            {
+                StartCoroutine(BackToInitPosRoutine());
+            }
         }
         else
         {
@@ -117,6 +121,8 @@ public class CardInGame : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDra
 
     private IEnumerator BackToInitPosRoutine()
     {
+        Debug.Log("RETURN");
+
         float lElapsedTime = 0;
         float lTimeToEffect = 1;
 
@@ -128,5 +134,7 @@ public class CardInGame : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDra
 
             yield return null;
         }
+
+        yield break;
     }
 }
