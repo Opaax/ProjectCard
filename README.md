@@ -11,5 +11,5 @@ This project does not have very much to show as visuals yet.
 [![Watch the video](https://img.youtube.com/vi/DaTZMd28Dvk/maxresdefault.jpg)](https://youtu.be/DaTZMd28Dvk)
 
 Card Editor:
-I also create a google sheet where I can parse data on. [Not dev in this project yet]
+I also create a Google sheet where I can parse data on. [Not dev in this project yet]
 ![Capture d’écran 2023-06-13 122029](https://github.com/Opaax/ProjectCard/assets/61538252/d8529f4a-e0cb-4fab-ad52-916e0659efa2)
