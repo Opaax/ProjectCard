@@ -4,7 +4,7 @@ I'm a big of Dragon Ball world. I loved playing Dragon Ball Dokkan battle.
 
 I start to make this project with cards with the team-building mechanics that Dokkan got.
 However, I wanted to make a 3D project so, you can place your card and the world, and like YuGiOh a 3D object will appear.
-A long time ago Dokkan did release an alpha for an exotic game like clash royal.
+A long time ago Dokkan did release an alpha for an exotic game like clash royal inside Dokkan Battle.
 
 This project does not have very much to show yet.
 
